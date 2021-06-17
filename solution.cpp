@@ -240,48 +240,8 @@ void print_vector(vector<T> a) {
  * sort(v.begin(), v.end(), greater<T>()) sorts the elements in escending order.
 */
 
-int left(int idx) {
-  return 2 * idx + 1;
-}
-
-int right(int idx) {
-  return 2 * idx + 2;
-}
-
-void max_heapify(vector<int> &heap, int idx) {
-  while (true) {
-    int l = left(idx);
-    int r = right(idx);
-    int heap_size = heap.size();
-    int big = idx;
-
-    if (l < heap_size and heap[l] > heap[idx]) {
-      big = l;
-    }
-
-    if (r < heap_size and heap[r] > heap[big]) {
-      big = r;
-    }
-
-    if (idx != big) {
-      swap(heap[idx], heap[big]);
-      idx = big;
-    } else {
-      return;
-    }
-  }
-}
-
 //start solving the problem in this function.
 void solve() {
-  int n;
-  cin >> n;
-  vector<int> heap(n);
-  input_vector(heap);
-  for (int i = n / 2; i >= 0; i--) {
-    max_heapify(heap, i);
-  }
-  print_vector(heap);
 }
 
 int main() {
